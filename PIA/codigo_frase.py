@@ -10,9 +10,7 @@ while opcion != 6:
         print(7*"*", "Agregar frase", 7*"*")
         id_frase = int(input("Ingrese el ID de la frase: "))
         frase = input("Ingrese la frase motivadora que desea agregar: ")
-        archivo = open("frases.txt", "a")
-        archivo.write("\n" + frase)
-        archivo.close()
+        
 
     elif opcion == 2:
         print(7*"*", "Ver frase", 7*"*")
