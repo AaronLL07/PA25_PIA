@@ -20,6 +20,13 @@ while opcion != 6:
             autor = input("Autor de la frase: ")
             obj_frase = Frase(id_frase, frase, autor, stars_calif)
             frases.append(obj_frase)
+
+            frases_str = [id_frase, frase, autor, stars_calif]
+            archivo = open("frases.txt", "w")
+            cad = str(frases_str) + "\n"
+            archivo.write(cad)
+            archivo.close()            
+
             fr_ag += 1
 
         elif fr_ag > 0:
@@ -32,6 +39,13 @@ while opcion != 6:
                     autor = input("Autor de la frase: ")
                     obj_frase = Frase(id_frase, frase, autor, stars_calif)
                     frases.append(obj_frase)
+
+                    frases_str = [id_frase, frase, autor, stars_calif]
+                    archivo = open("frases.txt", "a")
+                    cad = str(frases_str) + "\n"
+                    archivo.write(cad)
+                    archivo.close()            
+
                     break
                 if obj_frase.id_frase == id_frase:
                     print("Ya se encuentra una frase con ese ID, intente con un ID distinto.")
@@ -67,6 +81,12 @@ while opcion != 6:
             resultado = (i, porcentaje)
             stars_calif.append(resultado)
         
+        frases_str = [id_frase, frase, autor, stars_calif]
+        archivo = open("frases.txt", "a")
+        cad = str(frases_str) + "\n"
+        archivo.write(cad)
+        archivo.close()  
+        
         res = input("Desea ver la calificación que acaba de ingresar S/N: ")    
         if res.upper() == "S":
             print(f"{total_op} calificaciones globales")
@@ -87,6 +107,7 @@ while opcion != 6:
             for obj_frase in frases:
                 if obj_frase.id_frase == id_frase:
                     frases.remove(obj_frase)
+                    print("Frase eliminada con éxito.")
                     break
             if obj_frase.id_frase != id_frase:
                 print("No coincide el ID con ninguna frase almacenada, ingrese el ID de nuevo.")
@@ -96,11 +117,11 @@ while opcion != 6:
         while obj_frase.id_frase != id_frase:
             id_frase = int(input("Ingrese el ID de la frase modificar: "))
             if obj_frase.id_frase == id_frase:     
-                for obj_frase in frases:
-                    nueva_frase = input("Ingrese la frase con la que desea remplazar la anterior: ")
-                    nuevo_autor = input("Ingrese el nombre del autor para modificar el anterior: ")
-                    obj_frase.frase = nueva_frase
-                    obj_frase.autor = nuevo_autor
+                nueva_frase = input("Ingrese la frase con la que desea remplazar la anterior: ")
+                nuevo_autor = input("Ingrese el nombre del autor para modificar el anterior: ")
+                obj_frase.frase = nueva_frase
+                obj_frase.autor = nuevo_autor
+                print("Frase modificada con éxito.")
         if obj_frase.id_frase != id_frase:
                 print("No coincide el ID con ninguna frase almacenada, ingrese el ID de nuevo.")
 
